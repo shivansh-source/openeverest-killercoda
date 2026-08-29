@@ -1,9 +1,19 @@
 
-The environment prepared Helm, the OpenEverest chart repository and a container image
-pre-pull in the background. Wait for it to finish before you start:
+The environment is preparing Helm, the OpenEverest chart repository and a container image
+pre-pull in the background. On a cold cache that takes **several minutes** — it is pulling
+the Percona Postgres, pgBouncer and pgBackRest images onto every node.
+
+You do not have to wait for it. It only warms image caches so that step 2 is faster;
+everything below works either way. Check on it if you like, and press `Ctrl-C` whenever
+you want to move on:
 
 ```
-while [ ! -f /tmp/openeverest-setup-done ]; do echo "waiting for setup..."; sleep 3; done; echo "READY"
+while [ ! -f /tmp/openeverest-setup-done ]; do
+    printf "\rwarming image caches... %ss elapsed  (Ctrl-C to skip)" "$SECONDS"
+    sleep 5
+    [ "$SECONDS" -ge 660 ] && { echo; echo "still running - carrying on anyway"; break; }
+done
+[ -f /tmp/openeverest-setup-done ] && echo "background setup complete"
 ```{{exec}}
 
 <br>
