@@ -1,0 +1,31 @@
+{
+  "title": "Deploy OpenEverest & Provision HA PostgreSQL",
+  "description": "Install OpenEverest and provision a highly-available PostgreSQL cluster",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh"
+    },
+    "steps": [
+      {
+        "title": "Install OpenEverest",
+        "text": "step1.md"
+      },
+      {
+        "title": "Provision HA PostgreSQL",
+        "text": "step2.md",
+        "verify": "verify.sh"
+      },
+      {
+        "title": "Verify cluster health",
+        "text": "step3.md"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-2nodes"
+  }
+}
