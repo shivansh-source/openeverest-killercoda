@@ -96,7 +96,7 @@ manual wiring, and a ready-to-use connection URI comes included. The Instance te
 which secret:
 
 ```
-kubectl get instance pg-ha-demo -n everest-system -o jsonpath='{.status.connectionSecretRef}'; echo
+kubectl get instance pg-ha-demo -n everest-system -o jsonpath='{.status.connectionSecretRef.name}'; echo
 ```{{exec}}
 
 ```
